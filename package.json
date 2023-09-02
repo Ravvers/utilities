@@ -12,7 +12,7 @@
 		"coverage": "vitest run --coverage",
 		"test-watch": "vitest",
 		"build": "npx tsc",
-		"publish": "npm run test && npm run build"
+		"publish": "npm run build && npm run test && npm publish --access public"
 	},
 	"repository": {
 		"type": "git",
