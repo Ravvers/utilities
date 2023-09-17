@@ -5,6 +5,7 @@ export type ErrorMessages = {
 export interface CustomErrorObject<T> {
 	message: T[keyof T];
 	errorType: string;
+	context?: string;
 }
 
 export class CustomErrorGenerator<T extends ErrorMessages> {
@@ -15,10 +16,11 @@ export class CustomErrorGenerator<T extends ErrorMessages> {
 		this.errorMessages = errorMessages;
 	}
 
-	newError(errorKey: keyof T): CustomErrorObject<T> {
+	newError(errorKey: keyof T, context?: string): CustomErrorObject<T> {
 		return {
 			message: this.errorMessages[errorKey],
-			errorType: this.name
+			errorType: this.name,
+			context: context
 		};
 	}
 }
