@@ -34,6 +34,19 @@ describe("CustomErrorGenerator.ts", () => {
 				errorType: "CustomErrorGenerator"
 			});
 		});
+		it("should return the correct error object with context", () => {
+			const customErrorGenerator = new CustomErrorGenerator(
+				"CustomErrorGenerator",
+				errors
+			);
+			expect(customErrorGenerator.newError("ERROR_1", "context")).toEqual(
+				{
+					message: "Error 1",
+					errorType: "CustomErrorGenerator",
+					context: "context"
+				}
+			);
+		});
 	});
 	describe("getIsOkFunction", () => {
 		it("should return a function", () => {
